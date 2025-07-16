@@ -1,0 +1,61 @@
+@model IEnumerable<EventManagementSystem.Models.EventsTable>
+
+@{
+    ViewData["Title"] = "Events";
+}
+
+<h1 class="text-center mb-4">Event Listings</h1>
+
+<div class="row mb-4">
+    <div class="col-md-6 mb-2">
+        <a asp-action="Create" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Create New Event
+        </a>
+    </div>
+    <div class="col-md-6">
+        <form asp-action="Index" method="get" class="d-flex">
+            <input type="text" name="searchString" class="form-control me-2" placeholder="Search events..." value="@ViewData["CurrentFilter"]" />
+            <button type="submit" class="btn btn-outline-primary">Search</button>
+        </form>
+    </div>
+</div>
+
+<table class="table table-bordered table-hover align-middle text-center">
+    <thead class="table-primary">
+        <tr>
+            <th>Event Name</th>
+            <th>Category</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Venue</th>
+            <th>Status</th>
+            <th>Booking User</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.EventName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Category)</td>
+                <td>@item.StartDate.ToString("dd MMM yyyy")</td>
+                <td>@item.EndDate.ToString("dd MMM yyyy")</td>
+                <td>@Html.DisplayFor(modelItem => item.Venue)</td>
+                <td>
+                    <span class="badge bg-@(item.Status == "Approved" ? "success" : item.Status == "Pending" ? "warning text-dark" : "secondary")">
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </span>
+                </td>
+                
+                <td>
+                    <div class="btn-group" role="group">
+                        <a asp-action="Edit" asp-route-id="@item.EventId" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.EventId" class="btn btn-sm btn-info">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.EventId" class="btn btn-sm btn-danger">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

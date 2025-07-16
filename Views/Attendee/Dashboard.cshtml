@@ -1,0 +1,29 @@
+﻿@model IEnumerable<EventManagementSystem.Models.Booking>
+
+@{
+    ViewData["Title"] = "My Bookings";
+}
+
+<h2>My Bookings</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.Event.EventName</td>
+                <td>@booking.Event.StartDate.ToShortDateString()</td>
+                <td>@booking.Event.EndDate.ToShortDateString()</td>
+                <td>@booking.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>

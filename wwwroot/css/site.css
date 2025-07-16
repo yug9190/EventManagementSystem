@@ -1,0 +1,133 @@
+:root {
+    --background: #ffffff;
+    --text: #212529;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --footer-bg: #343a40;
+    --footer-text: #f8f9fa;
+    --highlight: #0056b3;
+    --card-bg: #f8f9fa;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1rem;
+    background-color: var(--background);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary);
+    transition: color 0.3s ease;
+}
+
+    a:hover {
+        color: var(--highlight);
+    }
+
+main {
+    flex: 1;
+    padding: 2rem 0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary);
+    font-size: 1.1rem;
+    box-shadow: 0 2px 4px var(--shadow);
+}
+
+    .navbar .navbar-brand,
+    .navbar .nav-link {
+        color: #fff !important;
+        transition: color 0.2s ease;
+    }
+
+        .navbar .nav-link:hover {
+            color: #d5d5d5 !important;
+        }
+
+        .navbar .nav-link.active {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+/* Buttons */
+.btn {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease-in-out;
+    border-radius: 0.375rem;
+}
+
+    .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 3px 6px var(--shadow);
+    }
+
+/* Card & Section Enhancements */
+.card {
+    background-color: var(--card-bg);
+    border: none;
+    box-shadow: 0 4px 10px var(--shadow);
+    border-radius: 1rem;
+}
+
+section.bg-light {
+    background-color: #f5f9fc !important;
+}
+
+/* Back to List Link */
+.back-to-list {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+    .back-to-list:hover {
+        color: var(--primary);
+    }
+
+/* Footer */
+.custom-footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    padding: 2rem 1rem;
+    font-size: 1rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+    .custom-footer a {
+        color: var(--footer-text);
+        font-weight: 600;
+    }
+
+        .custom-footer a:hover {
+            color: var(--primary);
+        }
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+    .navbar .nav-link {
+        font-size: 0.95rem;
+    }
+
+    .custom-footer {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        font-size: 0.95rem;
+    }
+
+    .card {
+        margin: 1rem 0;
+    }
+}

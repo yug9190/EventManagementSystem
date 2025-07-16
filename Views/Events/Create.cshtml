@@ -1,0 +1,87 @@
+@model EventManagementSystem.Models.EventsTable
+
+@{
+    ViewData["Title"] = "Create Event";
+}
+
+<h3 class="text-center text-primary mb-4">Create New Event</h3>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div class="mb-3">
+                <label asp-for="EventName" class="form-label">Event Name</label>
+                <input asp-for="EventName" class="form-control" />
+                <span asp-validation-for="EventName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Category" class="form-label">Category</label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="StartDate" class="form-label">Start Date</label>
+                <input asp-for="StartDate" type="datetime-local" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="EndDate" class="form-label">End Date</label>
+                <input asp-for="EndDate" type="datetime-local" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Venue" class="form-label">Venue</label>
+                <input asp-for="Venue" class="form-control" id="venueInput" placeholder="Search venue..." />
+                <span asp-validation-for="Venue" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Status" class="form-label">Status</label>
+                <select asp-for="Status" class="form-select">
+                    <option value="">-- Select Status --</option>
+                    <option value="Upcoming">Upcoming</option>
+                    <option value="Ongoing">Ongoing</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+
+            <div class="mb-3 d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <!-- Google Maps JavaScript API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCshYjHtFmgvc8Oh5wjTYbYEzrd2rFlCmk&libraries=places"></script>
+
+    <script>
+        function initAutocomplete() {
+            const input = document.getElementById('venueInput');
+            if (input) {
+                const autocomplete = new google.maps.places.Autocomplete(input);
+                autocomplete.setFields(['formatted_address']);
+                autocomplete.addListener('place_changed', function () {
+                    const place = autocomplete.getPlace();
+                    input.value = place.formatted_address || input.value;
+                });
+            }
+        }
+
+        // Initialize autocomplete after Google Maps script is loaded
+        window.onload = initAutocomplete;
+    </script>
+}

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<EventManagementSystem.Models.EventCategory>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<h1 class="mb-4">Categories</h1>
+
+<div class="row mb-3">
+    <div class="col-md-6">
+        <a asp-action="Create" class="btn btn-primary">Create New Category</a>
+    </div>
+    <div class="col-md-6">
+        <form asp-action="Index" method="get" class="d-flex justify-content-end">
+            <div class="input-group">
+                <input type="text" name="searchString" class="form-control rounded-start" placeholder="Search categories" value="@ViewData["CurrentFilter"]" />
+                <button type="submit" class="btn btn-primary rounded-end">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped table-hover align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Price Per Hour (₹)</th>
+            <th>Price Per Day (₹)</th>
+            <th>Is Active</th>
+            <th>Max Capacity</th>
+            <th class="text-center" style="width: 200px;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.PricePerHour)</td>
+                <td>@Html.DisplayFor(modelItem => item.PricePerDay)</td>
+                <td>@(item.IsActive ? "Yes" : "No")</td>
+                <td>@Html.DisplayFor(modelItem => item.MaxCapacity)</td>
+                <td>
+                    <div class="d-flex justify-content-around">
+                        <a asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.CategoryId" class="btn btn-info btn-sm">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.CategoryId" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
