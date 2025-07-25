@@ -40,6 +40,14 @@ This document provides a comprehensive overview of the Event Management System b
 A modern event management platform developed using **ASP.NET Core MVC**, **SignalR**, and **Entity Framework Core**. This system allows admins, organizers, and attendees to manage and participate in events with real-time features and a responsive UI.
 
 ---
+<img width="975" height="512" alt="image" src="https://github.com/user-attachments/assets/a4f37dab-7ea1-41ee-95d4-0f13121f78ce" />
+<img width="975" height="512" alt="image" src="https://github.com/user-attachments/assets/f0c3ae4d-21de-4409-9dfb-f0e2d31a71cf" />
+
+<img width="975" height="512" alt="image" src="https://github.com/user-attachments/assets/f5e75840-9b95-415e-b7ee-61df4f2847e9" />
+<img width="975" height="512" alt="image" src="https://github.com/user-attachments/assets/b9b71a9a-1277-48ad-9021-91bfa0c1b46a" />
+<img width="975" height="512" alt="image" src="https://github.com/user-attachments/assets/d309a2d7-c621-421b-93ee-4a1e30567a66" />
+<img width="939" height="494" alt="image" src="https://github.com/user-attachments/assets/a9814bc4-f77a-4d25-8755-d5f17423bc90" />
+<img width="975" height="512" alt="image" src="https://github.com/user-attachments/assets/7486c1ae-22b4-4359-98f8-8e24cc12a41d" />
 
 ## 🚀 Features
 
